@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Poker Game</title>
+    <link rel="stylesheet" href="styleMain.css">
+    <link rel="stylesheet" href="stylecard.css">
+    <link rel="stylesheet" href="styleCardsBack.css">
+</head>
+<body>
+    <div class="main">
+        <div class = "cardDeck" id = "me"></div>
+        <div class = "cardDeck" id = "fir"></div>
+        <div class = "cardDeck" id = "sec"></div>
+        <div class = "cardDeck" id = "thir"></div>
+        
+        <div class="total">
+            <p class="totalVal"></p>
+        </div>
+    </div>
+    <button id="btn_start">Start</button>
+    <button id="btn_reset" class="dis" disabled>Reset</button>
+    <button id="bet" class="dis" disabled>Bet!</button>
+    <button id="die" class="dis" disabled>Die</button>
+    
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

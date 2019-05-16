@@ -1,0 +1,28 @@
+.back{
+  transform: rotateY(180deg);
+}
+
+.front {
+    z-index:2;
+    transform: rotateY(0deg);
+    background:url('image/cardBack.jpg');
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+}
+
+.card, .front, .back {
+    width: 100px;
+    height: 150px;
+}
+
+.card{
+    display: inline-block;
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.front, .back{
+  position: absolute;
+  backface-visibility:hidden;
+}
