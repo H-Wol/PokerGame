@@ -44,8 +44,12 @@ function cardDistribution(player,deck){
             DATA[alivePlayer[i]]['deck'].push((deck[i]%10));
         }
         deck.shift();
+        
+        if(arguments[2] == 1){
+            console.log(player[alivePlayer[i]].lastElementChild);
+            player[alivePlayer[i]].lastElementChild.style.transform = 'rotateY(180deg)';
+        }
     }
-    
     cardFlipper();
 }
 
@@ -76,11 +80,14 @@ function betOrDie(player){
     
     if(randomval === 1){
         DATA[player]["alive"] = 0;
-        document.querySelectorAll(".cardDeck")[player].style.background = 'black';
         alert("Player "+ DATA[player]["user"] + " is dead");
+        let dead = document.querySelectorAll(".cardDeck")[player].childNodes;
+        for (let i = dead.length-1; i>=0 ; i--) {
+           dead[i].remove();
+        }
     }
     else{
-        payMoney(player,moneyTotal/2);
+        payMoney(player,arguments[1]/2);
     }
 }
 
@@ -123,10 +130,9 @@ function game(){
     const playerDecks = document.querySelectorAll('.cardDeck');
     var round  = 0;
     var temTotalMoney = 0;
-    var deck;
+    var deck ;
     start.addEventListener('click',()=>{
         deck = shuffle(makeDeck());
-        round = 1;
         start.disabled = true;
         //base betting
         for(let i = 0; i < 4; i++){
@@ -134,26 +140,36 @@ function game(){
             payMoney(i,10);
         }
         //give 3 cards to each player
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 2; i++) {
             cardDistribution(playerDecks,deck);    
         }
+        cardDistribution(playerDecks,deck,1);
         refresValues();
         btnAbled(false);
       })
+
     document.querySelector("#bet").addEventListener('click',()=>{
-       var alivePlayer =checkAlivePlayer();
+       var alivePlayer = checkAlivePlayer();
+       temTotalMoney = moneyTotal;
        alivePlayer.shift(); //자신제외
        round++;
-
+        
        btnAbled(true);
+       payMoney(0,temTotalMoney/2);
        alivePlayer.forEach(player => {
-           betOrDie(player);
+           betOrDie(player,temTotalMoney);
        });
 
-       cardDistribution(playerDecks,deck);    
+       cardDistribution(playerDecks,deck,1);    
        refresValues();
        
        btnAbled(false);
+       if(round === 3){
+           btnAbled(true);
+           playerDecks.forEach(eachDeck=>{
+               eachDeck.children[0].style.transform = eachDeck.children[1].style.transform = "rotateY(180deg)"; 
+           })
+       }
     })
     
     
