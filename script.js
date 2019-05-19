@@ -90,7 +90,6 @@ function payMoney(playerNum,money){
 }
 function prepareForNextGame(decks){
     moneyTotal = 0;
-    refresValues();
     decks.forEach(deck => {
         for (var i = deck.childNodes.length -1; i >= 0 ; i--) {
             deck.childNodes[i].remove();
@@ -99,6 +98,8 @@ function prepareForNextGame(decks){
     DATA.forEach(eachPlayer=>{
         eachPlayer["deck"] = [];
     })
+    refresValues();
+
 }
 function btnAbled(boolean){
      var btns = document.getElementsByClassName("dis");
@@ -121,10 +122,10 @@ function game(){
     const start = document.getElementById("btn_start");
     const playerDecks = document.querySelectorAll('.cardDeck');
     var round  = 0;
-    
-    const deck = shuffle(makeDeck());
+    var temTotalMoney = 0;
+    var deck;
     start.addEventListener('click',()=>{
-
+        deck = shuffle(makeDeck());
         round = 1;
         start.disabled = true;
         //base betting
