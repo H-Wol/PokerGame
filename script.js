@@ -128,10 +128,12 @@ function checkcard(deck){
 function game(){
     const start = document.getElementById("btn_start");
     const playerDecks = document.querySelectorAll('.cardDeck');
-    var round  = 0;
+    var round;
     var temTotalMoney = 0;
     var deck ;
     start.addEventListener('click',()=>{
+        round = 0;
+        prepareForNextGame(playerDecks);
         deck = shuffle(makeDeck());
         start.disabled = true;
         //base betting
@@ -164,15 +166,30 @@ function game(){
        refresValues();
        
        btnAbled(false);
-       if(round === 3){
+       if(round === 2){
            btnAbled(true);
            playerDecks.forEach(eachDeck=>{
                eachDeck.children[0].style.transform = eachDeck.children[1].style.transform = "rotateY(180deg)"; 
            })
+           start.disabled = false;
        }
     })
     
-    
+    document.querySelector("#die").addEventListener('click',()=>{
+        var alivePlayer = checkAlivePlayer();
+        alivePlayer.shift();
+        var reword = Math.floor(moneyTotal/alivePlayer.length);
+        alert("you're dead!");
+        alivePlayer.forEach(alivePlayer=>{
+            DATA[alivePlayer]['money'] += reword;
+        })
+        moneyTotal = 0;
+        DATA[0]["lose"] += 1;
+        refresValues();
+        btnAbled(true);
+        start.disabled = false;
+    })
+
     document.querySelector("#btn_reset").addEventListener('click',()=>{
         btnAbled(true);
         start.disabled = false;
