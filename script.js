@@ -88,7 +88,18 @@ function payMoney(playerNum,money){
     DATA[playerNum]["money"] -= money;
     moneyTotal += money;
 }
-
+function prepareForNextGame(decks){
+    moneyTotal = 0;
+    refresValues();
+    decks.forEach(deck => {
+        for (var i = deck.childNodes.length -1; i >= 0 ; i--) {
+            deck.childNodes[i].remove();
+        }
+    });
+    DATA.forEach(eachPlayer=>{
+        eachPlayer["deck"] = [];
+    })
+}
 function btnAbled(boolean){
      var btns = document.getElementsByClassName("dis");
      Array.from(btns).forEach(btns => {
@@ -96,7 +107,7 @@ function btnAbled(boolean){
      });
 
 }
-function refreshMoneyVal(){ 
+function refresValues(){ 
     const total = document.querySelector(".totalVal");
     total.innerHTML = "Total : \\" + moneyTotal;
 
@@ -108,7 +119,7 @@ function checkcard(deck){
 }
 function game(){
     const start = document.getElementById("btn_start");
-    const playerDeck = document.querySelectorAll('.cardDeck');
+    const playerDecks = document.querySelectorAll('.cardDeck');
     var round  = 0;
     
     const deck = shuffle(makeDeck());
@@ -123,18 +134,14 @@ function game(){
         }
         //give 3 cards to each player
         for (let i = 0; i < 3; i++) {
-            cardDistribution(playerDeck,deck);    
+            cardDistribution(playerDecks,deck);    
         }
-        refreshMoneyVal();
-        
-
-
+        refresValues();
         btnAbled(false);
       })
-
     document.querySelector("#bet").addEventListener('click',()=>{
        var alivePlayer =checkAlivePlayer();
-       alivePlayer.shift();
+       alivePlayer.shift(); //자신제외
        round++;
 
        btnAbled(true);
@@ -142,13 +149,23 @@ function game(){
            betOrDie(player);
        });
 
-       cardDistribution(playerDeck,deck);    
-       refreshMoneyVal();
+       cardDistribution(playerDecks,deck);    
+       refresValues();
        
        btnAbled(false);
     })
     
     
+    document.querySelector("#btn_reset").addEventListener('click',()=>{
+        btnAbled(true);
+        start.disabled = false;
+        alert("game over");
+        prepareForNextGame(playerDecks);
+        DATA.forEach(eachPlayer=>{
+            eachPlayer["money"] = 1000;
+        })
+        DATA[0]["win"] = DATA[0]["lose"] = 0;
+    })
 }
 
 window.onload = function(){
