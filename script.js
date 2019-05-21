@@ -46,7 +46,6 @@ function cardDistribution(player,deck){
         deck.shift();
         
         if(arguments[2] == 1){
-            console.log(player[alivePlayer[i]].lastElementChild);
             player[alivePlayer[i]].lastElementChild.style.transform = 'rotateY(180deg)';
         }
     }
@@ -169,8 +168,10 @@ function game(){
        if(round === 2){
            btnAbled(true);
            playerDecks.forEach(eachDeck=>{
+               if(eachDeck.children.length !== 0){
                eachDeck.children[0].style.transform = eachDeck.children[1].style.transform = "rotateY(180deg)"; 
-           })
+               }
+            })
            start.disabled = false;
        }
     })

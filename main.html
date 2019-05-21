@@ -1,31 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Poker Game</title>
-    <link rel="stylesheet" href="styleMain.css">
-    <link rel="stylesheet" href="stylecard.css">
-    <link rel="stylesheet" href="styleCardsBack.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Poker Game</title>
+  <link rel="stylesheet" href="styleMain.css">
+  <link rel="stylesheet" href="stylecard.css">
+  <link rel="stylesheet" href="styleCardsBack.css">
 </head>
+
 <body>
-    <div class="main">
-        <div class = "cardDeck" id = "me"></div>
-        <div class = "cardDeck" id = "fir"></div>
-        <div class = "cardDeck" id = "sec"></div>
-        <div class = "cardDeck" id = "thir"></div>
-        
-        <div class="total">
-            <p class="totalVal"></p>
-        </div>
+
+  <div id="me_about"></div>
+  <div id="me_nemo">
+    <div id="me_name"><ins>방 장</ins></div>
+    <div id="me_money">머니표시</div>
+    <div id="win">승 : </div>
+    <div id="lose">패 : </div>
+  </div>
+
+
+  <div id="fir_about"></div>
+  <div id="fir_nemo">
+    <div id="fir_name"><ins>강동빈</ins></div>
+    <div id="fir_money">머니표시</div>
+  </div>
+
+
+  <div id="sec_about"></div>
+  <div id="sec_nemo">
+    <div id="sec_name"><ins>권 용</ins></div>
+    <div id="sec_money">머니표시</div>
+  </div>
+
+
+  <div id="thir_about"></div>
+  <div id="thir_nemo">
+    <div id="thir_name"><ins>윤재헌</ins></div>
+    <div id="thir_money">머니표시</div>
+  </div>
+
+
+  <div class="main">
+    <div class="cardDeck" id="me"></div>
+    <div class="cardDeck" id="fir"></div>
+    <div class="cardDeck" id="sec"></div>
+    <div class="cardDeck" id="thir"></div>
+
+    <div class="total">
+      <p class="totalVal"></p>
     </div>
-    <button id="btn_start">Start</button>
-    <button id="btn_reset">Reset</button>
-    <button id="bet" class="dis" disabled>Bet!</button>
-    <button id="die" class="dis" disabled>Die</button>
-    
-    <script src="data.js"></script>
-    <script src="script.js"></script>
+  </div>
+  <button id="btn_start"></button>
+  <button id="btn_reset"></button>
+  <button id="bet" class="dis" disabled></button>
+  <button id="die" class="dis" disabled></button>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+  <div id="score">
+    <div id="title"><i><b>이번게임결과</b></i></div>
+    <div id="me_result">방 장 : <br>카드내용</div>
+    <div id="fir_result">강동빈 : <br>카드내용</div>
+    <div id="sec_result">권 용 : <br>카드내용</div>
+    <div id="thir_result">윤재헌 : <br>카드내용</div>
+  </div>
+
 </body>
+
 </html>

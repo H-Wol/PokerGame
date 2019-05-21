@@ -1,63 +1,327 @@
-*{
-    margin: 0;
-    box-sizing: border-box;
-    padding: 0;
-}
-body{
-    background: url(image/pokerBackgr.jpg);
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
 }
 
-.main{
-    position: absolute;
-    left : 50%;
-    top : 50%;
-    transform: translate(-50%,-50%);
-    background: green;
-    height: 600px;
-    width: 1100px;
-    border-radius: 1000px;
-    border : 50px solid brown;
-}
-.total{
-    background: url(image/chip.jpg);
-    background-size: 150px;
-    position: absolute;
-    left : 50%;
-    top : 50%;
-    transform: translate(-50%,-50%);
-    height: 150px;
-    width: 150px;
-    border-radius: 100px;
-    color: white;
-    display: table;
-}
-.totalVal{
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
+body {
+  background-image: url("image/background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
 }
 
-.cardDeck{
-    height: 150px;
-    width: 600px;
+.main {
+  position: absolute;
+  left: 300px;
+  top: 300px;
+  background-image: url("image/table.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 570px;
+  width: 1100px;
 }
-#me, #fir, #sec, #thir{
-    position: relative;
-    text-align: center;
+
+.total {
+  background: url("image/chip.jpg");
+  background-size: 150px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  color: white;
+  display: table;
 }
-#me{
-    top : 90%;
-    left: 25%;
+
+.totalVal {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
-#fir{
-    top: 0%;
-    left: -25%;
+
+.cardDeck {
+  height: 150px;
+  width: 600px;
 }
-#sec{
-    top: -80%;
-    left: 25%;
+
+#btn_start {
+  background-image: url("image/play.jpg");
+  background-size: 100%;
+  width: 150px;
+  height: 150px;
 }
-#thir{
-    top: -60%;
-    left: 80%;
+
+#btn_reset {
+  background-image: url("image/reset.jpg");
+  background-size: 100%;
+  width: 150px;
+  height: 150px;
+}
+
+#die {
+  background-image: url("image/die.jpg");
+  background-size: 100%;
+  width: 150px;
+  height: 150px;
+}
+
+#bet {
+  background-image: url("image/btc.jpg");
+  background-size: 100%;
+  width: 150px;
+  height: 150px;
+}
+
+#me, #fir, #sec, #thir {
+  position: absolute;
+  text-align: center;
+}
+
+#me {
+  top: 80%;
+  left: -20%;
+}
+
+#fir {
+  top: 0%;
+  left: -20%;
+}
+
+#sec {
+  top: 0%;
+  left: 60%;
+}
+
+#thir {
+  top: 80%;
+  left: 60%;
+}
+
+#me_about {
+  background-image: url("image/me.png");
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 650px;
+  left: 200px;
+  z-index: 100;
+}
+
+#me_nemo {
+  background-image: url("image/nemo.png");
+  width: 300px;
+  height: 100px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 650px;
+  left: 300px;
+  z-index: 100;
+}
+
+#me_name {
+  color: white;
+  position: absolute;
+  top: 12%;
+  left: 40%;
+  font-size: 25px;
+}
+
+#me_money {
+  color: white;
+  position: absolute;
+  top: 55%;
+  left: 10%;
+  font-size: 20px;
+}
+
+#win {
+  color: white;
+  position: absolute;
+  top: 55%;
+  left: 45%;
+  font-size: 20px;
+}
+
+#lose {
+  color: white;
+  position: absolute;
+  top: 55%;
+  left: 70%;
+  font-size: 20px;
+}
+
+#fir_about {
+  background-image: url("image/fir.png");
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  z-index: 100;
+}
+
+#fir_nemo {
+  background-image: url("image/nemo.png");
+  width: 200px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  z-index: 100;
+}
+
+#fir_name {
+  color: white;
+  position: absolute;
+  top: 12%;
+  left: 32%;
+  font-size: 25px;
+}
+
+#fir_money {
+  color: white;
+  position: absolute;
+  top: 55%;
+  left: 30%;
+  font-size: 20px;
+}
+
+#sec_about {
+  background-image: url("image/sec.png");
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 200px;
+  left: 1080px;
+  z-index: 100;
+}
+
+#sec_nemo {
+  background-image: url("image/nemo.png");
+  width: 200px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 200px;
+  left: 1180px;
+  z-index: 100;
+}
+
+#sec_name {
+  color: white;
+  position: absolute;
+  top: 12%;
+  left: 35%;
+  font-size: 25px;
+}
+
+#sec_money {
+  color: white;
+  position: absolute;
+  top: 55%;
+  left: 30%;
+  font-size: 20px;
+}
+
+#thir_about {
+  background-image: url("image/thir.png");
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 650px;
+  left: 1080px;
+  z-index: 100;
+}
+
+#thir_nemo {
+  background-image: url("image/nemo.png");
+  width: 200px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 650px;
+  left: 1180px;
+  z-index: 100;
+}
+
+#thir_name {
+  color: white;
+  position: absolute;
+  top: 12%;
+  left: 32%;
+  font-size: 25px;
+}
+
+#thir_money {
+  color: white;
+  position: absolute;
+  top: 55%;
+  left: 30%;
+  font-size: 20px;
+}
+
+#score {
+  background-image: url("image/bord.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 500px;
+  height: 700px;
+  top: 200px;
+  left: 1400px;
+}
+
+#title {
+  color: white;
+  font-size: 35px;
+  position: absolute;
+  top: 10%;
+  left: 27%;
+}
+
+#me_result {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 20%;
+  left: 27%;
+}
+
+#fir_result {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 40%;
+  left: 27%;
+
+}
+
+#sec_result {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 60%;
+  left: 27%;
+
+}
+
+#thir_result {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 80%;
+  left: 27%;
+
 }
