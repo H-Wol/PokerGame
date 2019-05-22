@@ -60,6 +60,7 @@ function cardFlipper(){
       })
     })
 }
+
 function test(){
     var a = document.querySelector('#bet');
     var b = document.querySelector("#die");
@@ -94,6 +95,7 @@ function payMoney(playerNum,money){
     DATA[playerNum]["money"] -= money;
     moneyTotal += money;
 }
+
 function prepareForNextGame(decks){
     moneyTotal = 0;
     decks.forEach(deck => {
@@ -107,6 +109,7 @@ function prepareForNextGame(decks){
     refresValues();
 
 }
+
 function btnAbled(boolean){
      var btns = document.getElementsByClassName("dis");
      Array.from(btns).forEach(btns => {
@@ -114,16 +117,29 @@ function btnAbled(boolean){
      });
 
 }
+
 function refresValues(){ 
     const total = document.querySelector(".totalVal");
+    const informations = document.querySelectorAll(".userInfo");
+    var count = 0;
+    informations.forEach(info => {
+        info.childNodes[1].innerHTML = DATA[count]["user"];
+        info.childNodes[3].innerHTML ="\\ "+ DATA[count]['money'];
+        count++;
+    });
+    informations[0].childNodes[5].innerHTML = DATA[0]["win"];
+    informations[0].childNodes[7].innerHTML = DATA[0]["lose"];
+    
     total.innerHTML = "Total : \\" + moneyTotal;
 
 }
-function checkcard(deck){
+
+function checkcard(deck){ //카드 패 확인 함수
     deck.sort(function(a,b){
         return a - b;
     });
 }
+
 function game(){
     const start = document.getElementById("btn_start");
     const playerDecks = document.querySelectorAll('.cardDeck');
@@ -156,19 +172,19 @@ function game(){
        round++;
         
        btnAbled(true);
-       payMoney(0,temTotalMoney/2);
+       payMoney(0,temTotalMoney/2); // 본인 배팅
        alivePlayer.forEach(player => {
            betOrDie(player,temTotalMoney);
        });
 
-       cardDistribution(playerDecks,deck,1);    
+       cardDistribution(playerDecks,deck,1);
        refresValues();
        
        btnAbled(false);
        if(round === 2){
            btnAbled(true);
-           playerDecks.forEach(eachDeck=>{
-               if(eachDeck.children.length !== 0){
+           playerDecks.forEach(eachDeck=>{ // 앞의 두 카드 오픈
+               if(eachDeck.children.length !== 0){ // 플레이어가 죽지 않아 카드가 있을경우에만 실행
                eachDeck.children[0].style.transform = eachDeck.children[1].style.transform = "rotateY(180deg)"; 
                }
             })

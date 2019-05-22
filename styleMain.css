@@ -13,8 +13,8 @@ body {
 
 .main {
   position: absolute;
-  left: 300px;
-  top: 300px;
+  left: 250px;
+  top: 200px;
   background-image: url("image/table.png");
   background-size: 100%;
   background-repeat: no-repeat;
@@ -50,29 +50,49 @@ body {
 #btn_start {
   background-image: url("image/play.jpg");
   background-size: 100%;
-  width: 150px;
-  height: 150px;
+  position: absolute;
+  top: 725px;
+  left: 1531px;
+  width: 70px;
+  height: 70px;
+  border: 0px;
+  z-index: 100;
 }
 
 #btn_reset {
   background-image: url("image/reset.jpg");
   background-size: 100%;
-  width: 150px;
-  height: 150px;
-}
-
-#die {
-  background-image: url("image/die.jpg");
-  background-size: 100%;
-  width: 150px;
-  height: 150px;
+  position: absolute;
+  top: 725px;
+  left: 1601px;
+  width: 70px;
+  height: 70px;
+  border: 0px;
+  z-index: 100;
 }
 
 #bet {
   background-image: url("image/btc.jpg");
   background-size: 100%;
-  width: 150px;
-  height: 150px;
+  position: absolute;
+  top: 725px;
+  left: 1671px;
+  width: 70px;
+  height: 70px;
+  border: 0px;
+  z-index: 100;
+}
+
+#die {
+  background-image: url("image/die.jpg");
+  background-size: 100%;
+  position: absolute;
+  top: 725px;
+  left: 1741px;
+  width: 70px;
+  height: 70px;
+  border: 0px;
+  z-index: 100;
 }
 
 #me, #fir, #sec, #thir {
@@ -106,8 +126,8 @@ body {
   width: 100px;
   height: 100px;
   position: absolute;
-  top: 650px;
-  left: 200px;
+  top: 550px;
+  left: 150px;
   z-index: 100;
 }
 
@@ -118,8 +138,8 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
-  top: 650px;
-  left: 300px;
+  top: 550px;
+  left: 250px;
   z-index: 100;
 }
 
@@ -161,8 +181,8 @@ body {
   width: 100px;
   height: 100px;
   position: absolute;
-  top: 200px;
-  left: 200px;
+  top: 100px;
+  left: 150px;
   z-index: 100;
 }
 
@@ -173,8 +193,8 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
-  top: 200px;
-  left: 300px;
+  top: 100px;
+  left: 250px;
   z-index: 100;
 }
 
@@ -200,8 +220,8 @@ body {
   width: 100px;
   height: 100px;
   position: absolute;
-  top: 200px;
-  left: 1080px;
+  top: 100px;
+  left: 1030px;
   z-index: 100;
 }
 
@@ -212,8 +232,8 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
-  top: 200px;
-  left: 1180px;
+  top: 100px;
+  left: 1130px;
   z-index: 100;
 }
 
@@ -239,8 +259,8 @@ body {
   width: 100px;
   height: 100px;
   position: absolute;
-  top: 650px;
-  left: 1080px;
+  top: 550px;
+  left: 1030px;
   z-index: 100;
 }
 
@@ -251,8 +271,8 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
-  top: 650px;
-  left: 1180px;
+  top: 550px;
+  left: 1130px;
   z-index: 100;
 }
 
@@ -277,9 +297,9 @@ body {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
-  width: 500px;
-  height: 700px;
-  top: 200px;
+  width: 550px;
+  height: 850px;
+  top: 20px;
   left: 1400px;
 }
 
@@ -303,25 +323,22 @@ body {
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 27%;
-
 }
 
 #sec_result {
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 27%;
-
 }
 
 #thir_result {
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 80%;
+  top: 65%;
   left: 27%;
-
 }
