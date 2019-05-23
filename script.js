@@ -10,20 +10,30 @@ function game(){
         prepareForNextGame(playerDecks);
         refreshResult();
         deck = shuffle(makeDeck());
-        
         start.disabled = true;
         //base betting
         for(let i = 0; i < 4; i++){
             DATA[i]["alive"] = 1;
             payMoney(i,10);
         }
-        //give 3 cards to each player
-        for (let i = 0; i < 2; i++) {
-            cardDistribution(playerDecks,deck);    
-        }   
-        cardDistribution(playerDecks,deck,1);
         refreshValues();
-        btnAbled(false);
+
+        //give 3 cards to each player
+        cardDistribution(playerDecks,deck);
+        setTimeout(() => {
+            cardDistribution(playerDecks,deck);    
+            
+        }, 1000);
+        
+        setTimeout(() => {
+            cardDistribution(playerDecks,deck,1);    
+        }, 2000);
+        setTimeout(() => {
+            playerDecks.forEach(playerDecks=>{
+                playerDecks.lastElementChild.style.transform = 'rotateY(180deg)';
+            })
+            btnAbled(false);
+        }, 3000);
       })
 
     document.querySelector("#bet").addEventListener('click',()=>{
@@ -31,18 +41,24 @@ function game(){
        temTotalMoney = moneyTotal;
        alivePlayer.shift(); //자신제외
        round++;
-        
        btnAbled(true);
        payMoney(0,temTotalMoney/2); // 본인 배팅
+
        alivePlayer.forEach(player => {
            betOrDie(player,temTotalMoney);
        });
 
-       cardDistribution(playerDecks,deck,1);
        refreshValues();
-       
-       btnAbled(false);
+       cardDistribution(playerDecks,deck,1);
+       setTimeout(() => {
+            playerDecks.forEach(playerDecks=>{
+                if(playerDecks.lastElementChild)
+                {playerDecks.lastElementChild.style.transform = 'rotateY(180deg)';
+            }})
+            btnAbled(false);
+        }, 1000);
        if(round === 2){
+           setTimeout(() => {
             btnAbled(true);
             start.disabled = false;
             playerDecks.forEach(eachDeck=>{ // 앞의 두 카드 오픈
@@ -51,10 +67,11 @@ function game(){
                }
             })
             var wonPlayer = checkCardRank();
-            console.log(DATA[wonPlayer]["user"]);
             displayResult(wonPlayer);
             refreshValues();
-       }
+          
+           }, 1100);
+            }
     })
     
     document.querySelector("#die").addEventListener('click',()=>{

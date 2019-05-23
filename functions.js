@@ -28,28 +28,32 @@ function cardDistribution(player,deck){
     const cardBack = "\"></div>";
     var code = '';
     var alivePlayer = checkAlivePlayer(player);
-
-    for(let i = 0; i < alivePlayer.length; i++){
+    var i = 0;
+    function givecard(){
         if(deck[0]>26){
             code = String.fromCharCode(deck[0]+70);    
         }
         else{
             code = String.fromCharCode(deck[0]+64);
         }
-        player[alivePlayer[i]].innerHTML += cardFront + code+ cardBack;
         if(deck[0]%10 === 0){
             DATA[alivePlayer[i]]['deck'].push(10);
         }
         else{
             DATA[alivePlayer[i]]['deck'].push((deck[0]%10));
         }
+
         deck.shift();
-        
-        if(arguments[2] == 1){
-            player[alivePlayer[i]].lastElementChild.style.transform = 'rotateY(180deg)';
+            player[alivePlayer[i]].innerHTML += cardFront + code+ cardBack;
+
+        i++
+        if(i == alivePlayer.length){
+            cardFlipper();
+            clearInterval(repeat);
         }
     }
-    cardFlipper();
+    var repeat =  setInterval(givecard, 200);
+    
 }
 
 function cardFlipper(){
@@ -138,7 +142,7 @@ function displayResult(wonPlayer){
         board_names[i].innerHTML = DATA[i]['user'] + " : " + money;
         board_names[i].style.color = 'white';
         board_ranks[i].innerHTML = DATA[i]['cardRank'][1] +" , "+ cardRank[DATA[i]['cardRank'][0]];
-        if(wonPlayer == i){
+        if(wonPlayer.includes(i)){
             board_names[i].style.color = "red";
         }
     }

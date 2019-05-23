@@ -25,9 +25,9 @@ function getPair(deck){
             paircount++;
         }
      }
-     if(longest => 3){
+     if(longest >= 3){
              returnType= [6];
-             if(longest> 3){
+             if(longest == 4){
                 returnType= [8];
              }
          }
@@ -127,15 +127,18 @@ function checkCardRank(){
     for(let i in DATA){
         if(hightest < DATA[i]['cardRank'][0]){
             hightest = DATA[i]['cardRank'][0];
-            wonPlayerNum = i;
+            wonPlayerNum = [i];
         }
         else if(hightest == DATA[i]['cardRank'][0]){
             if(DATA[wonPlayerNum]['cardRank'][1] < DATA[i]['cardRank'][1]){
-                wonPlayerNum = i;
+                wonPlayerNum = [i];
+            }
+            else if(DATA[wonPlayerNum]['cardRank'][1] == DATA[i]['cardRank'][1]){
+                wonPlayerNum.push(i);
             }
         }
     }
-    if(wonPlayerNum == 0){
+    if(wonPlayerNum .includes(0)){
         DATA[0]['win'] ++;
     }
     else{
