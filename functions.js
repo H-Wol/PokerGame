@@ -134,12 +134,18 @@ function refreshResult(){
     }
 }
 
-function displayResult(wonPlayer){
+function displayResult(wonPlayer,startMoney){
     const board_names = document.querySelectorAll(".name_result");
     const board_ranks = document.querySelectorAll(".card_result");
-    var money = 0;
+    wonPlayer.forEach(player => {
+        DATA[player]["money"] += moneyTotal/wonPlayer.length;
+    });
     for(let i in DATA){
-        board_names[i].innerHTML = DATA[i]['user'] + " : " + money;
+        var earnMoney = DATA[i]['money'] - startMoney[i];
+        if(earnMoney > 0){
+            earnMoney = "+"+ earnMoney;
+        }
+        board_names[i].innerHTML = DATA[i]['user'] + " : " + earnMoney;
         board_names[i].style.color = 'white';
         board_ranks[i].innerHTML = DATA[i]['cardRank'][1] +" , "+ cardRank[DATA[i]['cardRank'][0]];
         if(wonPlayer.includes(i)){

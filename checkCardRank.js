@@ -130,20 +130,21 @@ function checkCardRank(){
             wonPlayerNum = [i];
         }
         else if(hightest == DATA[i]['cardRank'][0]){
-            if(DATA[wonPlayerNum]['cardRank'][1] < DATA[i]['cardRank'][1]){
+            if(DATA[wonPlayerNum[0]]['cardRank'][1] < DATA[i]['cardRank'][1]){
                 wonPlayerNum = [i];
             }
-            else if(DATA[wonPlayerNum]['cardRank'][1] == DATA[i]['cardRank'][1]){
+            else if(DATA[wonPlayerNum[0]]['cardRank'][1] == DATA[i]['cardRank'][1]){
                 wonPlayerNum.push(i);
             }
         }
     }
-    if(wonPlayerNum .includes(0)){
+    if(wonPlayerNum .includes("0")){
         DATA[0]['win'] ++;
     }
     else{
         DATA[0]['lose']++;
     }
+    console.log(wonPlayerNum);  
     return wonPlayerNum;
 
 }

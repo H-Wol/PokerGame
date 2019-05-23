@@ -4,6 +4,7 @@ function game(){
     const playerDecks = document.querySelectorAll('.cardDeck');
     var round;
     var temTotalMoney = 0;
+    var temUserMoney;
     var deck ;
     start.addEventListener('click',()=>{
         round = 0;
@@ -11,13 +12,15 @@ function game(){
         refreshResult();
         deck = shuffle(makeDeck());
         start.disabled = true;
+        temUserMoney = [];
         //base betting
         for(let i = 0; i < 4; i++){
             DATA[i]["alive"] = 1;
+            temUserMoney.push(DATA[i]["money"]);
             payMoney(i,10);
         }
+        console.log(temUserMoney);
         refreshValues();
-
         //give 3 cards to each player
         cardDistribution(playerDecks,deck);
         setTimeout(() => {
@@ -46,9 +49,9 @@ function game(){
 
        alivePlayer.forEach(player => {
            betOrDie(player,temTotalMoney);
+           refreshValues();
        });
 
-       refreshValues();
        cardDistribution(playerDecks,deck,1);
        setTimeout(() => {
             playerDecks.forEach(playerDecks=>{
@@ -67,11 +70,11 @@ function game(){
                }
             })
             var wonPlayer = checkCardRank();
-            displayResult(wonPlayer);
+            displayResult(wonPlayer,temUserMoney);
             refreshValues();
           
            }, 1100);
-            }
+        }
     })
     
     document.querySelector("#die").addEventListener('click',()=>{
