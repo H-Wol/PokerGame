@@ -15,4 +15,6 @@ var cardRank = [
   "Two pair",
   'Four Straight',
   "Three Card",
-  "Five Straight"];
+  "Five Straight",
+  "Four Card"
+];

@@ -25,8 +25,11 @@ function getPair(deck){
             paircount++;
         }
      }
-     if(longest === 3){
+     if(longest => 3){
              returnType= [6];
+             if(longest> 3){
+                returnType= [8];
+             }
          }
     else if(longest ===2){
         if(paircount == 1){
