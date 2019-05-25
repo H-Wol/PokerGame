@@ -2,6 +2,7 @@
 function game(){
     const start = document.getElementById("btn_start");
     const playerDecks = document.querySelectorAll('.cardDeck');
+    var info = document.querySelectorAll(".userInfo");
     var round;
     var temTotalMoney = 0;
     var temUserMoney;
@@ -19,6 +20,7 @@ function game(){
             DATA[i]["alive"] = 1;
             temUserMoney.push(DATA[i]["money"]);
             payMoney(i,10);
+            document.querySelectorAll(".userInfo")[i].style.backgroundImage = "url(\'image/nemo.PNG\')";
         }
         console.log(temUserMoney);
         refreshValues();
@@ -37,56 +39,78 @@ function game(){
                 playerDecks.lastElementChild.style.transform = 'rotateY(180deg)';
             })
             btnAbled(false);
+            changeUserInfoBackGr(1);
         }, 3000);
       })
 
     document.querySelector("#bet").addEventListener('click',()=>{
        var alivePlayer = checkAlivePlayer();
-       var consoleA = document.getElementById("console");
-
-       var time  = (alivePlayer.length)*900;
-       var timePlus = 900;
+       var time  = (alivePlayer.length)*600;
+       var timePlus = 800;
        temTotalMoney = moneyTotal;
        alivePlayer.shift(); //자신제외
        round++;
        btnAbled(true);
+       
        payMoney(0,temTotalMoney/2); // 본인 배팅
-       consoleA.innerHTML = DATA[alivePlayer[0]]["user"] + " is Thinking";
+       changeUserInfoBackGr(alivePlayer,0);
+       refreshValues();
 
        for(let i = 0; i< alivePlayer.length; i++){
         setTimeout(() => {
             betOrDie(alivePlayer[i],temTotalMoney);
             refreshValues();
             if(i < alivePlayer.length-1){
-            consoleA.innerHTML = DATA[alivePlayer[i]+1]["user"] + " is Thinking";
+                changeUserInfoBackGr(alivePlayer,i+1);
             }
         }, (i+1)*timePlus);
        }
        setTimeout(() => {
-        consoleA.innerHTML = "";
-        cardDistribution(playerDecks,deck,1);
-       },time+900);
-       setTimeout(() => {
-            playerDecks.forEach(playerDecks=>{
-                if(playerDecks.lastElementChild)
-                {playerDecks.lastElementChild.style.transform = 'rotateY(180deg)';
-            }})
-            btnAbled(false);
-       }, time+timePlus*3);
-       if(round === 2){
-           setTimeout(() => {
+        if(checkAlivePlayer().length===1){
+            setTimeout(() => {
             btnAbled(true);
+            alert("No one servive without you!");
+            DATA[0].money += moneyTotal;
+            moneyTotal = 0;
             start.disabled = false;
-            playerDecks.forEach(eachDeck=>{ // 앞의 두 카드 오픈
-               if(eachDeck.children.length !== 0){ // 플레이어가 죽지 않아 카드가 있을경우에만 실행
-               eachDeck.children[0].style.transform = eachDeck.children[1].style.transform = "rotateY(180deg)"; 
-               }
-            })
-            var wonPlayer = checkCardRank();
-            displayResult(wonPlayer,temUserMoney);
             refreshValues();
-           }, time+timePlus*3+100);
-        }
+            },time-2000);
+           }
+           else{
+            setTimeout(() => {
+                changeUserInfoBackGr(alivePlayer,1,1);
+                if(round!==3){ 
+                cardDistribution(playerDecks,deck,1);}
+            },time-2000);
+    
+            setTimeout(() => {
+                    playerDecks.forEach(playerDecks=>{
+                        if(playerDecks.lastElementChild&& round !==2)
+                        {playerDecks.lastElementChild.style.transform = 'rotateY(180deg)';
+                    }})
+                    btnAbled(false);
+                    if(round !==3){
+                        changeUserInfoBackGr(1);
+                    }
+            }, time+timePlus*2-2000);
+    
+            if(round === 3){
+                setTimeout(() => {
+                    btnAbled(true);
+                    start.disabled = false;
+                    playerDecks.forEach(eachDeck=>{ // 앞의 두 카드 오픈
+                    if(eachDeck.children.length !== 0){ // 플레이어가 죽지 않아 카드가 있을경우에만 실행
+                    eachDeck.children[0].style.transform = eachDeck.children[1].style.transform = "rotateY(180deg)"; 
+                    }
+                    })
+                    var wonPlayer = checkCardRank();
+                    displayResult(wonPlayer,temUserMoney);
+                    refreshValues();
+                }, time+timePlus*3-2500);
+                }
+            }   
+       }, time );
+       
     })
     
     document.querySelector("#die").addEventListener('click',()=>{

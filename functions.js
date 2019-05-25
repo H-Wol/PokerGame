@@ -73,6 +73,8 @@ function betOrDie(player){
     if(randomval === 1){
         DATA[player]["alive"] = 0;
         console.log("Player "+ DATA[player]["user"] + " is dead");
+        var deadInfo =document.querySelectorAll(".userInfo");
+        deadInfo[player].style.backgroundImage = "url(\'image/Dead.PNG\')";
         let dead = document.querySelectorAll(".cardDeck")[player].childNodes;
         for (let i = dead.length-1; i>=0 ; i--) {
            dead[i].remove();
@@ -155,4 +157,26 @@ function displayResult(wonPlayer,startMoney){
         }
     }
     
+}
+
+function changeUserInfoBackGr(player,num){
+    var info = document.querySelectorAll(".userInfo");
+    if(arguments[2]&& DATA[player[player.length-1]]["alive"]==1){
+        info[player[player.length-1]].style.backgroundImage = "url(\'image/nemo.PNG\')";
+    }
+    else if(arguments[2]){
+        
+    }
+    else if(arguments[0] == 1){
+        info[0].style.backgroundImage = "url(\'image/thinking.PNG\')";
+    }
+    else{
+        info[player[num]].style.backgroundImage = "url(\'image/thinking.PNG\')";
+        if(num>0&&DATA[player[num-1]]['alive']===1){
+            info[player[num-1]].style.backgroundImage = "url(\'image/nemo.PNG\')";
+        }
+        else{
+            info[0].style.backgroundImage = "url(\'image/nemo.PNG\')";
+        }
+    }
 }

@@ -32,7 +32,9 @@ body {
   height: 150px;
   width: 150px;
   border-radius: 100px;
-  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(27, 96, 250);
   display: table;
 }
 
@@ -55,7 +57,7 @@ body {
   left: 1531px;
   width: 70px;
   height: 70px;
-  border: 0px;
+  border: 1px solid white;
   z-index: 100;
 }
 
@@ -67,7 +69,7 @@ body {
   left: 1601px;
   width: 70px;
   height: 70px;
-  border: 0px;
+  border: 1px solid white;
   z-index: 100;
 }
 
@@ -79,7 +81,7 @@ body {
   left: 1671px;
   width: 70px;
   height: 70px;
-  border: 0px;
+  border: 1px solid white;
   z-index: 100;
 }
 
@@ -91,9 +93,20 @@ body {
   left: 1741px;
   width: 70px;
   height: 70px;
-  border: 0px;
+  border: 1px solid white;
   z-index: 100;
 }
+
+#logout {
+  background-image: url("image/logout.jpg");
+  background-size: 100% 100%;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 1px solid white;
+  z-index: 100;
+}
+
 
 #me, #fir, #sec, #thir {
   position: absolute;
@@ -144,15 +157,16 @@ body {
 }
 
 #me_name {
+  font-weight: bold;
   color: white;
   position: absolute;
   top: 12%;
-  left: 40%;
+  left: 20%;
   font-size: 25px;
 }
 
 #me_money {
-  color: white;
+  color: rgb(27, 96, 250);
   position: absolute;
   top: 55%;
   left: 10%;
@@ -199,6 +213,7 @@ body {
 }
 
 #fir_name {
+  font-weight: bold;
   color: white;
   position: absolute;
   top: 12%;
@@ -207,7 +222,7 @@ body {
 }
 
 #fir_money {
-  color: white;
+  color: rgb(27, 96, 250);
   position: absolute;
   top: 55%;
   left: 30%;
@@ -238,6 +253,7 @@ body {
 }
 
 #sec_name {
+  font-weight: bold;
   color: white;
   position: absolute;
   top: 12%;
@@ -246,7 +262,7 @@ body {
 }
 
 #sec_money {
-  color: white;
+  color: rgb(27, 96, 250);
   position: absolute;
   top: 55%;
   left: 30%;
@@ -277,6 +293,7 @@ body {
 }
 
 #thir_name {
+  font-weight: bold;
   color: white;
   position: absolute;
   top: 12%;
@@ -285,7 +302,7 @@ body {
 }
 
 #thir_money {
-  color: white;
+  color: rgb(27, 96, 250);
   position: absolute;
   top: 55%;
   left: 30%;
@@ -343,7 +360,55 @@ body {
   left: 27%;
 }
 
-#console{
+#console {
   background-color: white;
-  color : black;
+  color: black;
+}
+
+#주인공1실험 {
+  background-image: url("image/point_nemo.png");
+  width: 300px;
+  height: 100px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 550px;
+  left: 250px;
+  z-index: 101;
+}
+
+#유저1실험 {
+  background-image: url("image/point_nemo.png");
+  width: 200px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 100px;
+  left: 250px;
+  z-index: 101;
+}
+
+#유저2실험 {
+  background-image: url("image/point_nemo.png");
+  width: 200px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 100px;
+  left: 1130px;
+  z-index: 101;
+}
+
+#유저3실험 {
+  background-image: url("image/point_nemo.png");
+  width: 200px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 550px;
+  left: 1130px;
+  z-index: 101;
 }

@@ -29,11 +29,10 @@ arrows.forEach(arrow => {
 
 function validateUser(user){ // check username length
     if(user.value.length < 6){
-        console.log('not enough characters');
-        error('rgb(189,87,87)');
+        error('rgb(10, 15, 12)');
     }
     else{
-        error('rgb(87,189,130)');
+        error('rgb(10, 15, 12)');
         return true;
     }
 }

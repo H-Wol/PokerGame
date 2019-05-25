@@ -6,7 +6,7 @@
 body{
     height : 100vh;
     display: flex;
-    background-color: rgb(87,189,130);
+    background-color: rgb(10, 15, 12);
     transition: background 0.5s ease;
     position: relative;    
 }
@@ -61,3 +61,39 @@ div:active{
         transform:  translate(-50%,-50%) rotate(0deg);
     }
 }
+
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+      }
+    @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+  }
+
+  h{
+      position: absolute;
+      top: 30%;
+    left: 36%;
+    transform: translate(-50%,-50%);
+    font-size: 6rem;
+    color : white;
+    
+  }
