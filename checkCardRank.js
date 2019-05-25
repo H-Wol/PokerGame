@@ -121,7 +121,7 @@ function checkCardRank(){
 
         }
         else{
-            DATA[i]['cardRank'] = [0,'dead'];
+            DATA[i]['cardRank'] = [0,'X'];
         }
     }
     for(let i in DATA){

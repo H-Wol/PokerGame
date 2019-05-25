@@ -342,3 +342,8 @@ body {
   top: 65%;
   left: 27%;
 }
+
+#console{
+  background-color: white;
+  color : black;
+}

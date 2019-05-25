@@ -67,10 +67,12 @@ function cardFlipper(){
 
 function betOrDie(player){
     var randomval = Math.floor(Math.random() * 10);
-    
+    var consoleA = document.getElementById("console");
+
+    console.log(DATA[player]['user'] + "is Thinking");
     if(randomval === 1){
         DATA[player]["alive"] = 0;
-        alert("Player "+ DATA[player]["user"] + " is dead");
+        console.log("Player "+ DATA[player]["user"] + " is dead");
         let dead = document.querySelectorAll(".cardDeck")[player].childNodes;
         for (let i = dead.length-1; i>=0 ; i--) {
            dead[i].remove();
@@ -152,4 +154,5 @@ function displayResult(wonPlayer,startMoney){
             board_names[i].style.color = "red";
         }
     }
+    
 }

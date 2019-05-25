@@ -13,6 +13,7 @@ function game(){
         deck = shuffle(makeDeck());
         start.disabled = true;
         temUserMoney = [];
+        
         //base betting
         for(let i = 0; i < 4; i++){
             DATA[i]["alive"] = 1;
@@ -41,25 +42,37 @@ function game(){
 
     document.querySelector("#bet").addEventListener('click',()=>{
        var alivePlayer = checkAlivePlayer();
+       var consoleA = document.getElementById("console");
+
+       var time  = (alivePlayer.length)*900;
+       var timePlus = 900;
        temTotalMoney = moneyTotal;
        alivePlayer.shift(); //자신제외
        round++;
        btnAbled(true);
        payMoney(0,temTotalMoney/2); // 본인 배팅
+       consoleA.innerHTML = DATA[alivePlayer[0]]["user"] + " is Thinking";
 
-       alivePlayer.forEach(player => {
-           betOrDie(player,temTotalMoney);
-           refreshValues();
-       });
-
-       cardDistribution(playerDecks,deck,1);
+       for(let i = 0; i< alivePlayer.length; i++){
+        setTimeout(() => {
+            betOrDie(alivePlayer[i],temTotalMoney);
+            refreshValues();
+            if(i < alivePlayer.length-1){
+            consoleA.innerHTML = DATA[alivePlayer[i]+1]["user"] + " is Thinking";
+            }
+            consoleA.innerHTML = "";
+        }, (i+1)*timePlus);
+       }
+       setTimeout(() => {
+        cardDistribution(playerDecks,deck,1);
+       },time+1000);
        setTimeout(() => {
             playerDecks.forEach(playerDecks=>{
                 if(playerDecks.lastElementChild)
                 {playerDecks.lastElementChild.style.transform = 'rotateY(180deg)';
             }})
             btnAbled(false);
-        }, 1000);
+       }, time+timePlus*3);
        if(round === 2){
            setTimeout(() => {
             btnAbled(true);
@@ -72,8 +85,7 @@ function game(){
             var wonPlayer = checkCardRank();
             displayResult(wonPlayer,temUserMoney);
             refreshValues();
-          
-           }, 1100);
+           }, time+timePlus*3+100);
         }
     })
     
@@ -105,6 +117,11 @@ function game(){
 }
 
 window.onload = function(){
-  game();
+    /*var a = request.getParameter("url");
+    response.sendRedirect(a);*/
+    refreshValues();
+    game();
+
+  
   }
 

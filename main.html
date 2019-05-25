@@ -9,10 +9,11 @@
   <link rel="stylesheet" href="styleMain.css">
   <link rel="stylesheet" href="stylecard.css">
   <link rel="stylesheet" href="styleCardsBack.css">
+  <link rel="stylesheet" href="hint.css">
 </head>
 
 <body>
-
+  <div id="console"></div>
   <div id="me_about"></div>
   <div class="userInfo" id="me_nemo">
       <div id="me_name"></div>
@@ -53,10 +54,10 @@
       <p class="totalVal"></p>
     </div>
   </div>
-  <button id="btn_start"></button>
-  <button id="btn_reset"></button>
-  <button id="bet" class="dis" disabled></button>
-  <button id="die" class="dis" disabled></button>
+  <button id="btn_start" aria-label="Start" class="hint--bottom"></button>
+  <button id="btn_reset" aria-label="Reset" class="hint--bottom"></button>
+  <button id="bet" aria-label="Betting" class="hint--bottom dis" disabled></button>
+  <button id="die" aria-label="Do you want to die?" class="hint--bottom dis" disabled></button>
 
   <div id="score">
     <div id="title"><i><b>이번게임결과</b></i></div>
