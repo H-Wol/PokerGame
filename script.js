@@ -60,12 +60,12 @@ function game(){
             if(i < alivePlayer.length-1){
             consoleA.innerHTML = DATA[alivePlayer[i]+1]["user"] + " is Thinking";
             }
-            consoleA.innerHTML = "";
         }, (i+1)*timePlus);
        }
        setTimeout(() => {
+        consoleA.innerHTML = "";
         cardDistribution(playerDecks,deck,1);
-       },time+1000);
+       },time+900);
        setTimeout(() => {
             playerDecks.forEach(playerDecks=>{
                 if(playerDecks.lastElementChild)
@@ -106,6 +106,7 @@ function game(){
 
     document.querySelector("#btn_reset").addEventListener('click',()=>{
         btnAbled(true);
+        refreshResult();
         start.disabled = false;
         alert("game over");
         DATA.forEach(eachPlayer=>{
@@ -114,14 +115,19 @@ function game(){
         DATA[0]["win"] = DATA[0]["lose"] = 0;
         prepareForNextGame(playerDecks); 
     })
+
+    document.querySelector("#logout").addEventListener('click',()=>{
+        alert("logout");
+        setTimeout(() => {
+            location.replace("Login.html");
+        }, 500);
+    })
 }
 
 window.onload = function(){
-    /*var a = request.getParameter("url");
-    response.sendRedirect(a);*/
+    var name = location.href.split("?");
+    DATA[0]['user'] = name[1];
     refreshValues();
     game();
-
-  
   }
 

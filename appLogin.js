@@ -11,7 +11,7 @@ arrows.forEach(arrow => {
         if(input.type === "text" && validateUser(input)){
             nextSlide(parent,nextForm);
             setTimeout(() => {
-                location.replace("main.html?name="+document.querySelector("input").value);
+                location.replace("main.html?"+document.querySelector("input").value);
             }, 1000);
         }
         else{

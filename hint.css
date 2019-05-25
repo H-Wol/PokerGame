@@ -2,12 +2,7 @@
 [class*="hint--"] {
     position: relative;
     display: inline-block;
-    /**
-       * tooltip arrow
-       */
-    /**
-       * tooltip body
-       */ }
+     }
     [class*="hint--"]:before, [class*="hint--"]:after {
       position: absolute;
       -webkit-transform: translate3d(0, 0, 0);
