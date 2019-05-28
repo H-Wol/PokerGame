@@ -6,7 +6,7 @@ function game(){
     var round;
     var temTotalMoney = 0;
     var temUserMoney;
-    var deck ;
+    var deck;
     start.addEventListener('click',()=>{
         round = 0;
         prepareForNextGame(playerDecks);
@@ -14,16 +14,17 @@ function game(){
         deck = shuffle(makeDeck());
         start.disabled = true;
         temUserMoney = [];
-        
+        refreshMoneyTable();
         //base betting
         for(let i = 0; i < 4; i++){
             DATA[i]["alive"] = 1;
             temUserMoney.push(DATA[i]["money"]);
             payMoney(i,10);
+            refreshMoneyTable();
             document.querySelectorAll(".userInfo")[i].style.backgroundImage = "url(\'image/nemo.PNG\')";
         }
-        console.log(temUserMoney);
         refreshValues();
+        refreshMoneyTable();
         //give 3 cards to each player
         cardDistribution(playerDecks,deck);
         setTimeout(() => {
@@ -53,13 +54,16 @@ function game(){
        btnAbled(true);
        
        payMoney(0,temTotalMoney/2); // 본인 배팅
+       refreshMoneyTable();
        changeUserInfoBackGr(alivePlayer,0);
        refreshValues();
+       refreshMoneyTable();
 
        for(let i = 0; i< alivePlayer.length; i++){
         setTimeout(() => {
             betOrDie(alivePlayer[i],temTotalMoney);
             refreshValues();
+            refreshMoneyTable();
             if(i < alivePlayer.length-1){
                 changeUserInfoBackGr(alivePlayer,i+1);
             }
@@ -74,6 +78,7 @@ function game(){
             moneyTotal = 0;
             start.disabled = false;
             refreshValues();
+            refreshMoneyTable();
             },time-2000);
            }
            else{
@@ -106,6 +111,7 @@ function game(){
                     var wonPlayer = checkCardRank();
                     displayResult(wonPlayer,temUserMoney);
                     refreshValues();
+                    refreshMoneyTable();
                 }, time+timePlus*3-2500);
                 }
             }   
@@ -124,6 +130,7 @@ function game(){
         moneyTotal = 0;
         DATA[0]["lose"] += 1;
         refreshValues();
+        refreshMoneyTable();
         btnAbled(true);
         start.disabled = false;
     })
@@ -131,6 +138,7 @@ function game(){
     document.querySelector("#btn_reset").addEventListener('click',()=>{
         btnAbled(true);
         refreshResult();
+        refreshMoneyTable();
         start.disabled = false;
         alert("game over");
         DATA.forEach(eachPlayer=>{
@@ -152,6 +160,7 @@ window.onload = function(){
     var name = location.href.split("?");
     DATA[0]['user'] = name[1];
     refreshValues();
+    refreshMoneyTable();
     game();
   }
 

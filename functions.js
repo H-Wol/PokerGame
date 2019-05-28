@@ -124,7 +124,7 @@ function refreshValues(){
     informations[0].childNodes[5].innerHTML = DATA[0]["win"];
     informations[0].childNodes[7].innerHTML = DATA[0]["lose"];
     
-    total.innerHTML = "Total : \\" + moneyTotal;
+    total.innerHTML =  "Total : \\" + moneyTotal;
 
 }
 function refreshResult(){
@@ -134,7 +134,6 @@ function refreshResult(){
     for(let i in board_names){
         board_names[i].innerHTML = "";
         board_ranks[i].innerHTML = "";
-
     }
 }
 
@@ -179,4 +178,66 @@ function changeUserInfoBackGr(player,num){
             info[0].style.backgroundImage = "url(\'image/nemo.PNG\')";
         }
     }
+}
+
+
+function refreshMoneyTable(){
+    const moneyTable = document.querySelectorAll(".moneyTable");
+    const totalTable = document.querySelector(".total");
+    const hundred = "<div style=\"position: absolute;\"> <img class = \"chips\" src=\"image/chip_100.PNG\" style=\"position: relative;\"></div>";
+    const ten = "<div style=\"position: absolute;\"> <img class = \"chips\" src=\"image/chip_10.PNG\" style=\"position: relative;\"></div>";
+    const one = "<div style=\"position: absolute;\"> <img class = \"chips\" src=\"image/chip_1.PNG\" style=\"position: relative;\"></div>";
+    var moneyArr = [hundred,ten,one];
+    var standard = [
+        { top : 600, left : 570},
+        { top : 150, left : 470},
+        { top : 150, left : 1350},
+        { top : 600, left : 1350}
+    ];
+    var totalPosition = {
+        top: 60, left: 0
+    }
+    var moneyCount = [];
+    const side = 50;
+    const upper = 5;
+    var px = 'px';
+    for(var i in DATA){
+        for(let z= moneyTable[i].childElementCount-1; z> 0; z-- ){ //이전 칩들 삭제
+            moneyTable[i].childNodes[z].remove();
+        }
+        moneyCount = [];
+        moneyCount.push(Math.floor(DATA[i]['money']/100));
+        moneyCount.push(Math.floor((DATA[i]['money']-moneyCount[0]*100)/10));
+        moneyCount.push(Math.floor((DATA[i]['money']-moneyCount[0]*100 - moneyCount[1]*10)/1));
+        for(let j in moneyCount){
+            for(let k  = 0; k < moneyCount[j]; k++){
+                moneyTable[i].innerHTML += moneyArr[j];
+                moneyTable[i].lastChild.style.top = standard[i]["top"] + px;
+                moneyTable[i].lastChild.style.left = standard[i]["left"] + px;
+                standard[i]["top"] -= upper;
+            }
+            standard[i]["top"] += upper*moneyCount[j];
+            standard[i]["left"]+= side;
+        }
+    }
+    moneyCount = [];
+    moneyCount.push(Math.floor(moneyTotal/100));
+    moneyCount.push(Math.floor((moneyTotal-moneyCount[0]*100)/10));
+    moneyCount.push(Math.floor((moneyTotal-moneyCount[0]*100 - moneyCount[1]*10)/1));
+
+    for(let z= totalTable.childElementCount; z> 1; z-- ){ //이전 칩들 삭제
+        totalTable.childNodes[z].remove();
+    }
+
+    for(let i in moneyCount){
+        for(let j = 0; j < moneyCount[i]; j++){
+            totalTable.innerHTML += moneyArr[i];
+            totalTable.lastChild.style.top = totalPosition["top"] + px;
+            totalTable.lastChild.style.left = totalPosition["left"] + px;
+            totalPosition["top"] -= upper;
+        }
+        totalPosition["top"] += upper*moneyCount[i];
+        totalPosition["left"]+= side;
+    }
+       
 }
