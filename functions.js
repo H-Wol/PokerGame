@@ -53,7 +53,6 @@ function cardDistribution(player,deck){
         }
     }
     var repeat =  setInterval(givecard, 200);
-    
 }
 
 function cardFlipper(){

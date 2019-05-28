@@ -40,7 +40,7 @@ function game(){
                 playerDecks.lastElementChild.style.transform = 'rotateY(180deg)';
             })
             btnAbled(false);
-            changeUserInfoBackGr(1);
+            changeUserInfoBackGr(1); //본인의 턴임을 알리는 배경 변경
         }, 3000);
       })
 
@@ -55,7 +55,7 @@ function game(){
        
        payMoney(0,temTotalMoney/2); // 본인 배팅
        refreshMoneyTable();
-       changeUserInfoBackGr(alivePlayer,0);
+       changeUserInfoBackGr(alivePlayer,0); // 나의 다음 순서자의 배경 변경 및 본인 배경색 변경
        refreshValues();
        refreshMoneyTable();
 
@@ -65,7 +65,7 @@ function game(){
             refreshValues();
             refreshMoneyTable();
             if(i < alivePlayer.length-1){
-                changeUserInfoBackGr(alivePlayer,i+1);
+                changeUserInfoBackGr(alivePlayer,i+1); // 다음 순서자 배경 번경 및 이전 순서자 변경
             }
         }, (i+1)*timePlus);
        }
@@ -83,7 +83,7 @@ function game(){
            }
            else{
             setTimeout(() => {
-                changeUserInfoBackGr(alivePlayer,1,1);
+                changeUserInfoBackGr(alivePlayer,1,1); // 마지막 순서의 배경 변경
                 if(round!==3){ 
                 cardDistribution(playerDecks,deck,1);}
             },time-2000);
