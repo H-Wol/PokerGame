@@ -194,7 +194,7 @@ function refreshMoneyTable(){
         { top : 600, left : 1350}
     ];
     var totalPosition = {
-        top: 60, left: 0
+        top: 40, left: 0
     }
     var moneyCount = [];
     const side = 50;
