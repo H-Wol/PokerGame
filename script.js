@@ -77,6 +77,7 @@ function game(){
             DATA[0].money += moneyTotal;
             moneyTotal = 0;
             start.disabled = false;
+            DATA[0].win += 1;
             refreshValues();
             refreshMoneyTable();
             },time-2000);
